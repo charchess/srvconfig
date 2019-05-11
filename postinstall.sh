@@ -6,6 +6,8 @@ apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software
 mkdir -p /data/rancher-fs
 echo "/data/rancher-nfs 172.18.0.0/24(rw,sync,no_subtree_check) 172.17.0.0/24(rw,sync,no_subtree_check) 127.0.0.1(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 exportfs -a
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 apt-get update
 
