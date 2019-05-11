@@ -9,10 +9,10 @@ exportfs -a
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 apt-get update
 
-mkdir -p /etc/systemd/system/docker.service.d/docker.root.conf
+mkdir -p /etc/systemd/system/docker.service.d
 echo "[Service]" > /etc/systemd/system/docker.service.d/docker.root.conf
 echo "ExecStart=" >> /etc/systemd/system/docker.service.d/docker.root.conf
-echo "ExecStart=/usr/bin/dockerd --dns 8.8.8.8 --dns 8.8.4.4 -g /data/docker --iptables=false -H fd://" >> /etc/systemd/system/docker.service.d/docker.root.conf
+echo "ExecStart=/usr/bin/dockerd -g /data/docker --iptables=false -H fd://" >> /etc/systemd/system/docker.service.d/docker.root.conf
 
 apt-get install -y docker-ce docker-ce-cli containerd.io
 
@@ -23,6 +23,6 @@ docker run -d -p 8081:8080 -v /data/rancher/mysql:/var/lib/mysql -v /data/ranche
 
 
 
-echo 'truxonline\\svc_karen_vpn truxonline "coincoin" *' >> /etc/chap-secrets
+echo 'truxonline\\svc_karen_vpn truxonline coincoin *' >> /etc/chap-secrets
 
 
