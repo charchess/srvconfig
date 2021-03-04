@@ -18,9 +18,9 @@ echo "ExecStart=/usr/bin/dockerd -g /data/docker --iptables=false -H fd://" >> /
 
 apt-get install -y docker-ce docker-ce-cli containerd.io
 
-mkdir -p /data/rancher
+#mkdir -p /data/rancher
 docker network create --subnet=172.18.0.0/24 txodockernet
-docker run -d -p 8081:8080 -v /data/rancher/mysql:/var/lib/mysql -v /data/rancher/cattle:/var/lib/cattle --net txodockernet --ip 172.18.0.38 --dns 8.8.8.8 --dns 8.8.4.4 --restart=unless-stopped --name=rancher rancher/server:stable
+#docker run -d -p 8081:8080 -v /data/rancher/mysql:/var/lib/mysql -v /data/rancher/cattle:/var/lib/cattle --net txodockernet --ip 172.18.0.38 --dns 8.8.8.8 --dns 8.8.4.4 --restart=unless-stopped --name=rancher rancher/server:stable
 
 
 
